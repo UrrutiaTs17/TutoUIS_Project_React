@@ -37,4 +37,9 @@ public class UsuarioService {
     public Optional<Usuario> findByCorreo(String correo) {
         return usuarioRepository.findByCorreo(correo);
     }
+
+    // Método para buscar por código estudiantil
+    public Optional<Usuario> findByCodigoEstudiantil(String codigo) {
+        return usuarioRepository.findByCodigoEstudiantil(codigo);
+    }
 }
