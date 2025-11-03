@@ -1,0 +1,112 @@
+.btn-perfil-solo {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.perfil-icon-solo {
+  background: #fff;
+  border: 2px solid #229954;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+  transition: box-shadow 0.2s, border-color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.btn-perfil-solo:hover .perfil-icon-solo,
+.btn-perfil-solo:focus .perfil-icon-solo {
+  background: #2299541a;
+  border-color: #145a32;
+  box-shadow: 0 0 12px 2px #22995488;
+  transform: scale(1.08);
+}
+
+.perfil-icon-solo i {
+  color: #229954;
+  font-size: 1.7rem;
+  transition: color 0.2s;
+}
+
+.btn-perfil-solo:hover .perfil-icon-solo i,
+.btn-perfil-solo:focus .perfil-icon-solo i {
+  color: #145a32;
+}
+
+.menu-btn {
+  font-weight: 500;
+  color: #155724;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.menu-btn:hover {
+  color: #0d3d1a;
+  background-color: rgba(33, 153, 84, 0.1);
+  border-radius: 8px;
+}
+
+.active-reserva {
+  color: #0d3d1a !important;
+  background-color: rgba(33, 153, 84, 0.15);
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* Animaciones de Animate.css */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate__animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.animate__fadeInDown {
+  animation-name: fadeInDown;
+}
+
+.animate__fadeInLeft {
+  animation-name: fadeInLeft;
+}
+
+.animate__fadeInRight {
+  animation-name: fadeInRight;
+}
