@@ -49,6 +49,15 @@ function Header() {
                   <span className="d-none d-md-inline">Información</span>
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link 
+                  className={`nav-link d-flex align-items-center animate__animated animate__fadeInLeft menu-btn ${location.pathname === '/users' ? 'active-reserva' : ''}`}
+                  to="/users"
+                >
+                  <i className="bi bi-people me-1 fs-5"></i>
+                  <span className="d-none d-md-inline">Usuarios</span>
+                </Link>
+              </li>
             </ul>
             
             {/* Menú de usuario logueado */}

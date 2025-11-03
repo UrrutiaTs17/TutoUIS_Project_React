@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@RestController 
-@RequestMapping("/api/usuarios") 
+@RestController
+@RequestMapping("/api/usuarios")
+@CrossOrigin(origins = "http://localhost:5173") // permitir llamadas desde Vite dev server
 public class UsuarioController {
 
     @Autowired
@@ -21,6 +22,44 @@ public class UsuarioController {
 
         Usuario nuevoUsuario = usuarioService.save(usuario);
         return new ResponseEntity<>(nuevoUsuario, HttpStatus.CREATED); 
+    }
+
+    // Endpoint de login simple: acepta { codigo, contrasena } o { correo, contrasena }
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody java.util.Map<String, String> creds) {
+        String codigo = creds.getOrDefault("codigo", null);
+        String correo = creds.getOrDefault("correo", null);
+        String contrasena = creds.getOrDefault("contrasena", null);
+
+        if ((codigo == null || codigo.isBlank()) && (correo == null || correo.isBlank())) {
+            return ResponseEntity.badRequest().body(java.util.Map.of("error", "Se requiere codigo o correo"));
+        }
+        if (contrasena == null) {
+            return ResponseEntity.badRequest().body(java.util.Map.of("error", "Se requiere contrasena"));
+        }
+
+        java.util.Optional<Usuario> optUsuario = java.util.Optional.empty();
+        if (codigo != null && !codigo.isBlank()) {
+            optUsuario = usuarioService.findByCodigoEstudiantil(codigo);
+        }
+        if (optUsuario.isEmpty() && correo != null && !correo.isBlank()) {
+            optUsuario = usuarioService.findByCorreo(correo);
+        }
+
+        if (optUsuario.isPresent()) {
+            Usuario u = optUsuario.get();
+            // En este proyecto inicial la verificación es simple: comparar la contraseña en claro.
+            // Si usas contraseñas hasheadas, aquí debes usar BCryptPasswordEncoder.matches(...)
+            if (u.getContrasena() != null && u.getContrasena().equals(contrasena)) {
+                // Eliminar campo contrasena antes de devolver
+                u.setContrasena(null);
+                return ResponseEntity.ok(u);
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(java.util.Map.of("error", "Credenciales inválidas"));
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(java.util.Map.of("error", "Usuario no encontrado"));
+        }
     }
 
     @GetMapping

@@ -18,20 +18,31 @@ function Login() {
     e.preventDefault();
     setCargando(true);
     setErrorLogin(null);
-
-    // Simulación de login (aquí conectarás con tu backend en el futuro)
-    setTimeout(() => {
-      if (usuario && contrasena) {
-        // Login exitoso (simulado)
-        console.log('Login exitoso:', { usuario, contrasena });
-        // Aquí navegarías a dashboard o home después del login
-        // navigate('/dashboard');
-        alert('Login exitoso! (Por ahora es una simulación)');
-      } else {
-        setErrorLogin('Por favor ingrese usuario y contraseña');
-      }
-      setCargando(false);
-    }, 1500);
+    // Intentar login real contra el backend
+    const payload = { codigo: usuario, contrasena };
+    fetch('http://localhost:8080/api/usuarios/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+      .then(async (res) => {
+        setCargando(false);
+        if (res.ok) {
+          const data = await res.json();
+          console.log('Login OK', data);
+          alert('Login exitoso!');
+          // Navegar a la lista de usuarios para pruebas CRUD
+          navigate('/users');
+        } else {
+          const err = await res.json().catch(() => ({}));
+          setErrorLogin(err.error || 'Error en login');
+        }
+      })
+      .catch((err) => {
+        console.error('Error conectando al backend', err);
+        setCargando(false);
+        setErrorLogin('No se pudo conectar al servidor');
+      });
   };
 
   return (
