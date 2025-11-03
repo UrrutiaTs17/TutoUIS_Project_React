@@ -12,6 +12,7 @@ function Users() {
   const [correo, setCorreo] = useState('');
   const [contrasena, setContrasena] = useState('');
   const [codigo, setCodigo] = useState('');
+  const [editingId, setEditingId] = useState(null);
 
   const API = 'http://localhost:8080/api/usuarios';
 
@@ -37,14 +38,18 @@ function Users() {
   const handleCreate = (e) => {
     e.preventDefault();
     const payload = { nombre, apellido, correo, contrasena, codigoEstudiantil: codigo };
-    fetch(API, {
-      method: 'POST',
+    const method = editingId ? 'PUT' : 'POST';
+    const url = editingId ? `${API}/${editingId}` : API;
+
+    fetch(url, {
+      method,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     })
       .then(async (res) => {
         if (res.ok) {
           setNombre(''); setApellido(''); setCorreo(''); setContrasena(''); setCodigo('');
+          setEditingId(null);
           fetchUsuarios();
         } else {
           const err = await res.json().catch(() => ({}));
@@ -55,6 +60,21 @@ function Users() {
         console.error(err);
         alert('No se pudo conectar al servidor');
       });
+  };
+
+  const handleEdit = (u) => {
+    setEditingId(u.id);
+    setNombre(u.nombre || '');
+    setApellido(u.apellido || '');
+    setCorreo(u.correo || '');
+    setContrasena(''); // no mostrar la contraseña actual
+    setCodigo(u.codigoEstudiantil || '');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleCancelEdit = () => {
+    setEditingId(null);
+    setNombre(''); setApellido(''); setCorreo(''); setContrasena(''); setCodigo('');
   };
 
   const handleDelete = (id) => {
