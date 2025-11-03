@@ -1,0 +1,62 @@
+/* Importar estilos base del Dashboard */
+@import './Dashboard.css';
+
+/* Personalizaciones para Admin Dashboard */
+.admin-sidebar {
+  background: linear-gradient(135deg, #0d3d72 0%, #1a5490 100%);
+}
+
+.admin-badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 8px;
+}
+
+.admin-avatar {
+  background: linear-gradient(135deg, #ffc107, #ff9800);
+  border-color: #ffc107;
+}
+
+.admin-stat-card {
+  border-left: 4px solid;
+}
+
+.admin-stat-card:nth-child(1) {
+  border-left-color: #0066cc;
+}
+
+.admin-stat-card:nth-child(2) {
+  border-left-color: #155724;
+}
+
+.admin-stat-card:nth-child(3) {
+  border-left-color: #17a2b8;
+}
+
+.admin-stat-card:nth-child(4) {
+  border-left-color: #ffc107;
+}
+
+.stat-icon.bg-info {
+  background: linear-gradient(135deg, #0dcaf0, #17a2b8);
+}
+
+/* Ajustes para el top-bar en admin */
+.admin-sidebar ~ .main-content .page-title {
+  color: #0d3d72;
+}
+
+.admin-sidebar ~ .main-content .btn-icon {
+  color: #0d3d72;
+}
+
+.admin-sidebar ~ .main-content .btn-icon:hover {
+  background: #e7f1ff;
+  color: #0a2d5c;
+}

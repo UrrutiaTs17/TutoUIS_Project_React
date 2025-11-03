@@ -1,14 +1,19 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import './Header.css';
 
 function Header() {
   const location = useLocation();
-  const isLoggedIn = false; // Por ahora hardcodeado, después se conectará con autenticación
-  const usuario = ""; // Para futuro uso
+  const navigate = useNavigate();
+  const { isAuthenticated, user, logout } = useAuth();
+
+  const usuario = user ? `${user.nombre || ''} ${user.apellido || ''}`.trim() : '';
 
   const handleLogout = () => {
-    // Lógica de logout para el futuro
-    console.log("Cerrando sesión...");
+    if (window.confirm('¿Está seguro que desea cerrar sesión?')) {
+      logout();
+      navigate('/login');
+    }
   };
 
   return (
@@ -49,19 +54,10 @@ function Header() {
                   <span className="d-none d-md-inline">Información</span>
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link 
-                  className={`nav-link d-flex align-items-center animate__animated animate__fadeInLeft menu-btn ${location.pathname === '/users' ? 'active-reserva' : ''}`}
-                  to="/users"
-                >
-                  <i className="bi bi-people me-1 fs-5"></i>
-                  <span className="d-none d-md-inline">Usuarios</span>
-                </Link>
-              </li>
             </ul>
             
             {/* Menú de usuario logueado */}
-            {isLoggedIn && (
+            {isAuthenticated() && (
               <div className="d-flex align-items-center gap-2">
                 {/* Información del usuario */}
                 <span className="text-success fw-semibold">{usuario}</span>
@@ -80,7 +76,7 @@ function Header() {
             )}
 
             {/* Botón de login (solo si no está logueado) */}
-            {!isLoggedIn && (
+            {!isAuthenticated() && (
               <div>
                 <Link to="/login" className="btn btn-success btn-sm animate__animated animate__fadeInRight fw-semibold">
                   <i className="bi bi-person-fill me-2"></i>Iniciar Sesión
