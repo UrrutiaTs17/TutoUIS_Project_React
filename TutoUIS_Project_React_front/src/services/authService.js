@@ -4,9 +4,9 @@ const API_URL = 'http://localhost:8080/api/usuarios';
 
 export const authService = {
   /**
-   * Realiza el login con código de estudiante y contraseña
-   * @param {string} codigo - Código del estudiante
-   * @param {string} contrasena - Contraseña del usuario
+   * 
+   * @param {string} codigo - Código de estudiante
+   * @param {string} contrasena - Contraseña de usuario
    * @returns {Promise} - Datos del usuario autenticado
    */
   async login(codigo, contrasena) {
@@ -25,13 +25,10 @@ export const authService = {
       throw new Error('No se recibió respuesta del servidor');
     } catch (error) {
       if (error.response) {
-        // El servidor respondió con un código de error
         throw new Error(error.response.data.error || 'Credenciales inválidas');
       } else if (error.request) {
-        // La petición fue hecha pero no hubo respuesta
         throw new Error('No se pudo conectar con el servidor. Verifique que el backend esté ejecutándose.');
-      } else {
-        // Algo sucedió al configurar la petición
+      } else {n
         throw new Error(error.message || 'Error al iniciar sesión');
       }
     }
@@ -45,7 +42,7 @@ export const authService = {
   },
 
   /**
-   * Obtiene el usuario actual del localStorage
+   * 
    * @returns {Object|null} - Datos del usuario o null si no está autenticado
    */
   getCurrentUser() {

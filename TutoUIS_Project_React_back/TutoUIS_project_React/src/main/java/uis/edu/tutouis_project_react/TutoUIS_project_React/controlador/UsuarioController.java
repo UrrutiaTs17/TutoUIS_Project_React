@@ -20,7 +20,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/usuarios")
-@CrossOrigin(origins = "http://localhost:5173") // permitir llamadas desde Vite dev server
+@CrossOrigin(origins = "http://localhost:5173") 
 @Tag(name = "Usuarios", description = "API para la gestión de usuarios del sistema TutoUIS")
 public class UsuarioController {
 
@@ -75,10 +75,8 @@ public class UsuarioController {
 
         if (optUsuario.isPresent()) {
             Usuario u = optUsuario.get();
-            // En este proyecto inicial la verificación es simple: comparar la contraseña en claro.
-            // Si usas contraseñas hasheadas, aquí debes usar BCryptPasswordEncoder.matches(...)
-            if (u.getContrasena() != null && u.getContrasena().equals(contrasena)) {
-                // Eliminar campo contrasena antes de devolver
+           
+            if (u.getContrasena() != null && u.getContrasena().equals(contrasena)) {              
                 u.setContrasena(null);
                 return ResponseEntity.ok(u);
             } else {

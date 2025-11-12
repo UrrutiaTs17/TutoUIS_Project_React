@@ -57,7 +57,7 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- SpringDoc OpenAPI (Swagger) para documentación de API -->
+		<!-- SpringDoc OpenAPI (Swagger) -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>

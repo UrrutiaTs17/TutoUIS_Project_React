@@ -14,8 +14,7 @@ function Dashboard() {
   const userName = user ? `${user.nombre || ''} ${user.apellido || ''}`.trim() : 'Usuario';
   const userEmail = user?.correo || 'correo@example.com';
   const userInitials = userName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
-
-  // Estadísticas de ejemplo (puedes reemplazar con datos reales del backend)
+ 
   const [stats, setStats] = useState({
     activeReservationsCount: 3,
     upcomingReservationsCount: 5,
@@ -30,9 +29,9 @@ function Dashboard() {
 
   const handleSetActiveSection = (section) => {
     setActiveSection(section);
-    setIsSidebarOpen(false); // Cerrar sidebar en móviles al cambiar sección
+    setIsSidebarOpen(false); 
     
-    // Actualizar título según la sección
+
     const titles = {
       'inicio': 'Dashboard',
       'nueva-reserva': 'Nueva Reserva',

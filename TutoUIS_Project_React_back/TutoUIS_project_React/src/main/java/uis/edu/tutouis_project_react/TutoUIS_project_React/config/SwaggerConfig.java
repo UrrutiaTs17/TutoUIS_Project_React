@@ -10,13 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
-/**
- * Configuración de Swagger/OpenAPI para la documentación de la API
- * 
- * Acceso a la documentación:
- * - Swagger UI: http://localhost:8080/swagger-ui.html
- * - OpenAPI JSON: http://localhost:8080/v3/api-docs
- */
+
 @Configuration
 public class SwaggerConfig {
 
