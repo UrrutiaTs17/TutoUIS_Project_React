@@ -18,7 +18,7 @@ function Login() {
     e.preventDefault();
     setCargando(true);
     setErrorLogin(null);
-    // Intentar login real contra el backend
+
     const payload = { codigo: usuario, contrasena };
     fetch('http://localhost:8080/api/usuarios/login', {
       method: 'POST',
@@ -31,7 +31,6 @@ function Login() {
           const data = await res.json();
           console.log('Login OK', data);
           alert('Login exitoso!');
-          // Navegar a la lista de usuarios para pruebas CRUD
           navigate('/users');
         } else {
           const err = await res.json().catch(() => ({}));

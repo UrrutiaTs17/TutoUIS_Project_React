@@ -3,11 +3,11 @@ import './Header.css';
 
 function Header() {
   const location = useLocation();
-  const isLoggedIn = false; // Por ahora hardcodeado, después se conectará con autenticación
-  const usuario = ""; // Para futuro uso
+  const isLoggedIn = false; 
+  const usuario = ""; 
 
   const handleLogout = () => {
-    // Lógica de logout para el futuro
+    
     console.log("Cerrando sesión...");
   };
 
