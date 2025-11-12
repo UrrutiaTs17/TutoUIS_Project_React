@@ -18,22 +18,22 @@ public class UsuarioService {
         return usuarioRepository.save(usuario);
     }
     
-    // 2. LEER TODOS (Read All)
+    // 2. LEER TODOS 
     public List<Usuario> findAll() {
         return usuarioRepository.findAll();
     }
 
-    // 3. LEER POR ID (Read One)
+    // 3. LEER POR ID 
     public Optional<Usuario> findById(String id) {
         return usuarioRepository.findById(id);
     }
 
-    // 4. ELIMINAR (Delete)
+    // 4. ELIMINAR
     public void delete(String id) {
         usuarioRepository.deleteById(id);
     }
       
-    // Método para buscar usuario por correo (clave para el login)
+    // Método para buscar usuario por correo
     public Optional<Usuario> findByCorreo(String correo) {
         return usuarioRepository.findByCorreo(correo);
     }
