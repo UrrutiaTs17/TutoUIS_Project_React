@@ -70,9 +70,10 @@ mvn spring-boot:run
 
 ### Backend
 - Spring Boot
-- MySQL/PostgreSQL
-- JPA/Hibernate
-- Spring Security
+- MongoDB
+- Spring Data MongoDB
+- Lombok
+- Swagger/OpenAPI 
 
 
 **Basado en**: [TutoUIS-Project Original](https://github.com/UrrutiaTs17/TutoUIS-Project)
