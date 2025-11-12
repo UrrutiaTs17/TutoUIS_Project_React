@@ -6,17 +6,14 @@ Sistema de reserva de tutorías para la Universidad Industrial de Santander (UIS
 
 Este proyecto es una reimplementación del sistema TutoUIS utilizando React en el frontend, basándose en los diseños del proyecto original desarrollado en Angular. 
 
-### Estado Actual del Proyecto
+## 👥 Equipo de Desarrollo
 
-**Frontend (React)**: 
-- Vistas de Home y Login completamente diseñadas
-- Componentes reutilizables (Header, Footer)
-- Sistema de rutas configurado
-- Diseño responsive
-- Animaciones y estilos modernos
+| Desarrollador | GitHub | Código |
+|---------------|--------|--------|
+| **Hammer Ronaldo Muñoz Hernández** | [@HammerRo](https://github.com/HammerRo) | 2211918 |
+| **Karen Dayana Mateus Gómez** | [@Kmateus8](https://github.com/Kmateus8) | 2212765 |
+| **William Andrés Urrutia Torres** | [@UrrutiaTs17](https://github.com/UrrutiaTs17) | 2220058 |
 
-**Backend (Spring Boot)**: 
-- La conexión a la base de datos se implementará posteriormente
 
 ## 🏗️ Estructura del Proyecto
 
@@ -51,16 +48,12 @@ Acceder a: `http://localhost:5173/`
 
 ```bash
 cd TutoUIS_Project_React_back/TutoUIS_project_React
-# Por implementar
+mvn spring-boot:run  
 ```
 
-## 📚 Documentación Detallada
+## 🎯 Características
 
-Para más información sobre el frontend, consulta el [README del Frontend](./TutoUIS_Project_React_front/README.md)
-
-## 🎯 Características Actuales
-
-- ✅ Página principal (Home) con información del sistema
+- ✅ Página principal con información del sistema
 - ✅ Página de login con validación de formularios
 - ✅ Navegación entre páginas
 - ✅ Diseño responsive
@@ -75,7 +68,7 @@ Para más información sobre el frontend, consulta el [README del Frontend](./Tu
 - Bootstrap Icons
 - Vite
 
-### Backend (Planeado)
+### Backend
 - Spring Boot
 - MySQL/PostgreSQL
 - JPA/Hibernate
